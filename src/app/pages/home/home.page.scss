@@ -1,0 +1,45 @@
+:host {
+  background: #131c21;
+
+  .home-header {
+    width: 100%;
+    background: #2a2f32;
+    color: #838a8d;
+
+    div {
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+
+      h1 {
+        flex: 1;
+        margin: 0;
+
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 24px;
+      }
+
+      mat-icon {
+        margin-left: 16px;
+      }
+    }
+
+    h2 {
+      padding: 8px;
+      width: 180px;
+      text-align: center;
+      color: #00af9c;
+      font-size: 14px;
+      line-height: 16px;
+      border-bottom: 4px solid #00af9c;
+    }
+  }
+
+  .home-content {
+    background: #131c21;
+    height: -webkit-fill-available;
+    overflow: auto;
+  }
+}

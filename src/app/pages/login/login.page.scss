@@ -1,0 +1,22 @@
+section {
+  padding: 40px;
+
+  h1 {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 44px;
+    color: #00af9c;
+    text-align: center;
+    margin: 15vh 0 60px;
+  }
+
+  ion-item {
+    &::part(native) {
+      padding: 0;
+    }
+  }
+
+  ion-button {
+    margin-top: 48px;
+  }
+}

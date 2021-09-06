@@ -1,0 +1,13 @@
+<section>
+  <header class="home-header">
+    <div>
+      <h1>WhatsApp</h1>
+      <mat-icon>search</mat-icon>
+      <mat-icon>more_vert</mat-icon>
+    </div>
+    <h2>{{ 'Conversas' | uppercase}}</h2>
+  </header>
+  <ion-list class="home-content">
+    <app-chat *ngFor="let chat of chats"></app-chat>
+  </ion-list>
+</section>
