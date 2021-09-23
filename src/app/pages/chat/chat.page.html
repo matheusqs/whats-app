@@ -1,0 +1,23 @@
+<section class="container-chat">
+  <header class="chat-header">
+    <button class="header__button" routerLink="/home">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <figure class="header__figure">
+      <img src="../../../assets/icon/default-user.svg" />
+    </figure>
+    <h6 class="header__name">Nome</h6>
+  </header>
+  <section class="chat-content">
+    <div>
+      <app-message
+        *ngFor="let message of messages"
+        [message]="message"
+      ></app-message>
+    </div>
+    <div class="content-actions">
+      <app-message-typer class="chat__message-typer"></app-message-typer>
+      <app-message-sender></app-message-sender>
+    </div>
+  </section>
+</section>

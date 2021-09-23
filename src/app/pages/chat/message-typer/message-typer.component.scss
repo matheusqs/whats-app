@@ -1,0 +1,10 @@
+.container-typer {
+  padding: 7.5px 32px;
+  display: flex;
+  background: #33383b;
+  border-radius: 100px;
+
+  ion-input {
+    flex: 1;
+  }
+}
