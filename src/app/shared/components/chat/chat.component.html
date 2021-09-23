@@ -1,12 +1,13 @@
-<figure>
-  <img src="../../../../assets/icon/default-user.svg" />
-</figure>
-
-<section>
-  <div>
-    <span>Matheus</span>
-    <span>{{ time | date: 'hh:mm' }}</span>
-  </div>
-  <span>Lorem ipsum dora sit amet</span>
-</section>
-
+<div class="chat-container" (click)="openChat()">
+  <figure>
+    <img src="../../../../assets/icon/default-user.svg" />
+  </figure>
+  
+  <section>
+    <div>
+      <span>Matheus</span>
+      <span>{{ time | date: 'hh:mm' }}</span>
+    </div>
+    <span>Lorem ipsum dora sit amet</span>
+  </section>
+</div>  
