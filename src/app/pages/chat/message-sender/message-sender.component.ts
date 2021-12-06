@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Message } from 'src/app/shared/models/message';
+import { ChatService } from 'src/app/stores/chat/chat.service';
 
 @Component({
   selector: 'app-message-sender',
@@ -6,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./message-sender.component.scss'],
 })
 export class MessageSenderComponent implements OnInit {
+  @Input() message: Message;
 
-  constructor() { }
+  constructor(public chatService: ChatService) { }
 
   ngOnInit() {}
+
+  onSendClick() {
+    this.chatService.sendMessage(this.message);
+  }
 
 }

@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MaterialModule } from 'src/app/shared/material/material.module';
+import { ModalHomeOptionsComponent } from './modal-home-options/modal-home-options.component';
 
 
 
@@ -18,6 +19,6 @@ import { MaterialModule } from 'src/app/shared/material/material.module';
     SharedModule,
     MaterialModule
   ],
-  declarations: [HomePage],
+  declarations: [HomePage, ModalHomeOptionsComponent],
 })
 export class HomeModule { }

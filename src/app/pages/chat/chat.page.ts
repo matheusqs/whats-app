@@ -1,42 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Observable } from 'rxjs';
+import Chat from 'src/app/shared/models/chat';
 import { Message } from 'src/app/shared/models/message';
+import { ChatService } from 'src/app/stores/chat/chat.service';
 
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.page.html',
   styleUrls: ['./chat.page.scss'],
 })
-export class ChatPage implements OnInit {
-  public messages: Message[] = [
-    {
-      content: 'Oii tudo bom?',
-      hasCurrentUserSent: false,
-      sentDatetime: new Date(),
-    },
-    {
-      content: 'Falaaa bom dms e vc?',
-      hasCurrentUserSent: true,
-      sentDatetime: new Date(),
-    },
-    {
-      content:
-        'Bom tbm, cara preciso de um help seu com o trabalho lá de mobile',
-      hasCurrentUserSent: false,
-      sentDatetime: new Date(),
-    },
-    {
-      content: 'Putz, bora olhar esse trem',
-      hasCurrentUserSent: true,
-      sentDatetime: new Date(),
-    },
-    {
-      content: 'Chama discord',
-      hasCurrentUserSent: true,
-      sentDatetime: new Date(),
-    },
-  ];
+export class ChatPage implements DoCheck {
+  public messages$: Observable<Message[]>;
 
-  constructor() {}
+  public message: Message;
 
-  ngOnInit() {}
+  public chat: Chat;
+
+  constructor(private chatService: ChatService) {
+    this.chat = chatService.selectedChat;
+    this.messages$ = this.chatService.retrieveChatMessages(this.chatService.selectedChat.id);
+  }
+
+  ngDoCheck(): void {
+    this.messages$ = this.chatService.retrieveChatMessages(this.chatService.selectedChat.id);
+  }
+
+  onMessageChange(message: string) {
+    this.message = {
+      chatId: this.chat.id,
+      sentDatetime: new Date(),
+      hasCurrentUserSent: true,
+      content: message
+    };
+  }
 }

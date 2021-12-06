@@ -4,20 +4,20 @@
       <mat-icon>arrow_back</mat-icon>
     </button>
     <figure class="header__figure">
-      <img src="../../../assets/icon/default-user.svg" />
+      <img [src]="chat.user.avatarUrl" />
     </figure>
-    <h6 class="header__name">Nome</h6>
+    <h6 class="header__name">{{ chat.user.name }}</h6>
   </header>
   <section class="chat-content">
     <div>
       <app-message
-        *ngFor="let message of messages"
+        *ngFor="let message of messages$ | async"
         [message]="message"
       ></app-message>
     </div>
     <div class="content-actions">
-      <app-message-typer class="chat__message-typer"></app-message-typer>
-      <app-message-sender></app-message-sender>
+      <app-message-typer class="chat__message-typer" (messageEmitter)="onMessageChange($event)"></app-message-typer>
+      <app-message-sender [message]="message"></app-message-sender>
     </div>
   </section>
 </section>

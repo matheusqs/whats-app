@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-message-typer',
@@ -6,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./message-typer.component.scss'],
 })
 export class MessageTyperComponent implements OnInit {
+  @Output() messageEmitter = new EventEmitter<string>();
 
-  constructor() { }
+  messageForm: FormGroup;
 
-  ngOnInit() {}
+  constructor(fb: FormBuilder) {
+    this.messageForm = fb.group({
+      message: ''
+    });
+  }
+
+  ngOnInit() {
+    this.messageForm.get('message').valueChanges.subscribe((message) => this.onChangeMessage(message));
+  }
+
+  onChangeMessage(message: string): void {
+    this.messageEmitter.emit(message);
+  }
 
 }

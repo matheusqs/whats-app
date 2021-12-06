@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ChatService } from 'src/app/stores/chat/chat.service';
+import Chat from '../../models/chat';
 
 @Component({
   selector: 'app-chat',
@@ -7,13 +9,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit {
-  public time: Date = new Date();
+  @Input()
+  public chat: Chat;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private chatService: ChatService) {}
 
   ngOnInit() {}
 
-  openChat(){
+  openChat() {
+    this.chatService.selectedChat = this.chat;
     this.router.navigate(['/chat']);
   }
 }

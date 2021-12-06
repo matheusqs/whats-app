@@ -2,12 +2,11 @@
   <header class="home-header">
     <div>
       <h1>WhatsApp</h1>
-      <ion-searchbar></ion-searchbar>
-      <mat-icon>more_vert</mat-icon>
+      <mat-icon (click)="onOptionsClick()">more_vert</mat-icon>
     </div>
     <h2>{{ 'Conversas' | uppercase}}</h2>
   </header>
   <ion-list class="home-content">
-    <app-chat *ngFor="let chat of chats"></app-chat>
+    <app-chat *ngFor="let chat of chats$ | async" [chat]="chat"></app-chat>
   </ion-list>
 </section>

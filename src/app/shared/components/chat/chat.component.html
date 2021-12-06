@@ -1,13 +1,13 @@
 <div class="chat-container" (click)="openChat()">
   <figure>
-    <img src="../../../../assets/icon/default-user.svg" />
+    <img [src]="chat.user.avatarUrl" />
   </figure>
-  
+
   <section>
     <div>
-      <span>Matheus</span>
-      <span>{{ time | date: 'hh:mm' }}</span>
+      <span>{{ chat.user.name }}</span>
+      <span>{{ chat.lastMessage.sentDatetime | date: "HH:mm" }}</span>
     </div>
-    <span>Lorem ipsum dora sit amet</span>
+    <span>{{ chat.lastMessage.content }}</span>
   </section>
-</div>  
+</div>
