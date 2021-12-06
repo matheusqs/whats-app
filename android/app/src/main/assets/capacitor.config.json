@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "WhatsApp",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
